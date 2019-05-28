@@ -10,3 +10,17 @@
   </head>
 
   <body>
+   <header>
+       <a class="menu-btn">
+          <span class="btn-box">
+            <span class="btn-inner"></span>
+          </span>
+        </a>
+       <nav>
+           <ul class="menu">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Works</a></li>
+           </ul>
+       </nav>
+    </header>
+    <main>
