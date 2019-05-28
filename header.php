@@ -9,5 +9,4 @@
     <meta name="author" content="Modulo" />
   </head>
 
-  <body></body>
-</html>
+  <body>
