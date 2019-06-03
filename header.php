@@ -7,6 +7,9 @@
     <title>Un portfolio qui déchire</title>
     <meta name="description" content="Mon super Portfolio" />
     <meta name="author" content="Modulo" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.min.css?v=1.0">
   </head>
 
   <body>
