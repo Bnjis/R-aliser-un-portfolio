@@ -20,7 +20,7 @@
           </span>
         </a>
        <nav>
-        <ul class="menu">
+        <ul class="menu -flex -flexColumn -flexJustifyCenter -flexAlignEnd">
             <li><a href="/">Accueil</a></li>
             <li><a href="/works.php">Works</a></li>
         </ul>
