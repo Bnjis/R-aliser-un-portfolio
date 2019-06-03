@@ -17,10 +17,10 @@
           </span>
         </a>
        <nav>
-           <ul class="menu">
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Works</a></li>
-           </ul>
+        <ul class="menu">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Works</a></li>
+        </ul>
        </nav>
     </header>
     <main>

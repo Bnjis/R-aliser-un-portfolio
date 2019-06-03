@@ -2,15 +2,15 @@
     include 'header.php';
 ?>
 
-<ul class="home--menu">
-    <li class="-appear"><a href="/archive.php" data-link="transition">Works</a></li>
+<ul class="homeMenu">
+    <li><a href="#">Works</a></li>
 </ul>
 
-<section class="home--slider">
-    <div class="images">
+<section class="homeSlider">
+    <div class="homeSlider-imagesContainer">
         <img src="medias/01.jpg" alt="">
     </div>
-    <h2><span class="-appear">Jean</span><span class="-appear">Christophe</span><span class="-appear">Portugal</span></h2>
+    <h1>Mon Super PortFolio</h1>
 </section>
 
 <?php
