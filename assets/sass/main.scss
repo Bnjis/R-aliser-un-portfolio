@@ -1,6 +1,9 @@
 @import "normalize/default";
 @import "normalize/custom";
 
+@import "variables/wrap-margin";
+@import "variables/colors";
+
 html {
   font-size: 62.5%;
   font-size: calc(1em * 0.625);
@@ -9,8 +12,19 @@ html {
 body {
   background-color: #222222;
 
-  color: #ffffff;
+  color: $main--color;
   font-family: "Roboto", sans-serif;
   font-size: 1.6rem;
   line-height: 2.4rem;
+}
+
+a {
+  color: $main--color;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

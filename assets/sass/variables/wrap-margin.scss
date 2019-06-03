@@ -1,0 +1,89 @@
+/* WRAPPERS */
+
+@mixin wrapped() {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.wrap {
+  max-width: 140.6rem;
+  @include wrapped;
+}
+
+/***
+**** FLEX 
+***/
+.\-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.\-flexColumn {
+  flex-direction: column;
+}
+.\-flexWrap {
+  flex-wrap: wrap;
+}
+.\-flexJustifySpaceBetween {
+  justify-content: space-between;
+}
+.\-flexJustifySpaceAround {
+  justify-content: space-around;
+}
+.\-flexJustifyEnd {
+  justify-content: flex-end;
+}
+.\-flexJustifySpaceEvenly {
+  justify-content: space-evenly;
+}
+.\-flexJustifyCenter {
+  justify-content: center;
+}
+.\-flexStretch {
+  align-items: stretch;
+}
+.\-flexAlignCenter {
+  align-items: center;
+  align-content: center;
+}
+.\-flexAlignEnd {
+  align-items: flex-end;
+}
+
+@mixin flexGrid($row-height, $space) {
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  margin: -$space / 2;
+  &:after {
+    content: "";
+    flex-grow: 999999999;
+    min-width: $row-height;
+    height: 0;
+  }
+
+  > * {
+    position: relative;
+    display: block;
+    height: $row-height;
+    margin: $space / 2;
+    flex-grow: 1;
+
+    > img {
+      height: $row-height;
+      object-fit: cover;
+      max-width: 100%;
+      min-width: 100%;
+      vertical-align: bottom;
+    }
+  }
+
+  &.gridMargin {
+    margin: $space / 2;
+  }
+}
