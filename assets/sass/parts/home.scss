@@ -1,0 +1,67 @@
+.homeMenu {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  right: 13rem;
+  top: 50%;
+  text-transform: unset;
+  transform: translateY(-50%);
+  z-index: 10;
+  line-height: 1em;
+  font-weight: 700;
+  font-size: 3rem;
+  list-style: none;
+
+  li {
+    margin-bottom: 1rem;
+    text-align: right;
+    animation-delay: 1.2s;
+
+    &:nth-child(1) {
+      animation-delay: 1.2s;
+    }
+    &:nth-child(2) {
+      animation-delay: 1.25s;
+    }
+    // .....
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.homeSlider {
+  height: 100vh;
+  position: relative;
+  &-imagesContainer {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    div {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      background-size: cover;
+      background-position: center top;
+    }
+  }
+  h1 {
+    margin-top: 0;
+    position: absolute;
+    left: 13rem;
+    top: 50%;
+    text-transform: unset;
+    transform: translateY(-50%);
+    line-height: 0.8em;
+    font-weight: 700;
+    font-size: 7rem;
+    text-transform: uppercase;
+    span {
+      display: block;
+      position: relative;
+    }
+  }
+}

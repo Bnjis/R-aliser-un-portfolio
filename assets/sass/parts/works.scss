@@ -1,0 +1,31 @@
+$line-min-height: 100px;
+$line-max-height: 350px !default;
+$grid-space: 0px !default;
+
+$grid-tablet-max: 980px !default;
+$grid-row-height-tablet: 400px !default;
+$grid-space-tablet: $grid-space !default;
+
+$grid-mobile-max: 400px !default;
+$grid-row-height-mobile: 400px !default;
+$grid-space-mobile: $grid-space !default;
+
+.grid {
+  background: #000;
+  padding: 5px;
+  max-width: 100%;
+  position: relative;
+
+  @include flexGrid($line-max-height, $grid-space);
+
+  @media (max-width: $grid-tablet-max) {
+    @include flexGrid($grid-row-height-tablet, $grid-space-tablet);
+  }
+  @media (max-width: $grid-mobile-max) {
+    @include flexGrid($grid-row-height-mobile, $grid-space-mobile);
+  }
+
+  a {
+    position: relative;
+  }
+}
