@@ -25,7 +25,52 @@ $grid-space-mobile: $grid-space !default;
     @include flexGrid($grid-row-height-mobile, $grid-space-mobile);
   }
 
+  &::before,
+  &::after {
+    content: "";
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+
+  &.willDelete-gridLoading::before,
+  &.willDelete-gridLoading::after {
+    opacity: 0;
+  }
+
+  &.gridLoading::before,
+  &.gridLoading::after {
+    content: "";
+    z-index: 999;
+    opacity: 1;
+  }
+
+  &.gridLoading::before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #2c2d31;
+  }
+
+  &.gridLoading::after {
+    position: absolute;
+    top: calc(25vh - 20px);
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    margin: 0 0 0 -20px;
+    border: 8px solid #383a41;
+    border-bottom-color: #565963;
+    border-radius: 50%;
+    animation: animLoader 0.8s linear forwards infinite;
+  }
+
   a {
     position: relative;
+    img {
+      opacity: 0;
+    }
   }
 }
