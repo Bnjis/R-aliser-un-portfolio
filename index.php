@@ -3,7 +3,7 @@
 ?>
 
 <ul class="homeMenu">
-    <li><a href="#">Works</a></li>
+    <li><a href="/works.php">Works</a></li>
 </ul>
 
 <section class="homeSlider">

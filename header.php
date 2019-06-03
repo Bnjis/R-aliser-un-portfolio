@@ -18,8 +18,8 @@
         </a>
        <nav>
         <ul class="menu">
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Works</a></li>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/works.php">Works</a></li>
         </ul>
        </nav>
     </header>
