@@ -1,6 +1,15 @@
+<?php
+  function get_link($path){
+	$base_dir = __DIR__;
+    $protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
+    $domain = $_SERVER['SERVER_NAME'];
+	$url = "${protocol}://${domain}${path}";
+	return $url;
+  }
+?>
 <!DOCTYPE html>
 
-<html lang="fr">
+<html lang="fr" class="csstransitions">
   <head>
     <meta charset="utf-8" />
 
@@ -25,9 +34,10 @@
         </a>
        <nav>
         <ul class="menu -flex -flexColumn -flexJustifyCenter -flexAlignEnd">
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/works.php">Works</a></li>
+            <li><a href="<?= get_link('/'); ?>" data-link="transition">Accueil</a></li>
+            <li><a href="<?= get_link('/works.php'); ?>" data-link="transition">Works</a></li>
         </ul>
        </nav>
     </header>
     <main>
+      <div class="main-content">

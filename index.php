@@ -3,7 +3,7 @@
 ?>
 
 <ul class="homeMenu">
-    <li><a href="/works.php">Works</a></li>
+    <li><a href="<?= get_link('/works.php'); ?>" data-link="transition">Works</a></li>
 </ul>
 
 <section class="homeSlider">

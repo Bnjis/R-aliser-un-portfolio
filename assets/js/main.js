@@ -23,7 +23,6 @@ $(document).ready(function() {
 
   function renderAnimation(effect) {
     let grid = document.querySelector(".grid");
-
     if (grid != null) {
       let gridItems = grid.querySelectorAll(".gridItem > .gridImg");
 
@@ -78,7 +77,7 @@ $(document).ready(function() {
               shareEl: true,
               fullscreenEl: false,
               focus: false,
-              historyEnabled: false,
+              historyEnabled: true,
               shareButtons: [
                 {
                   id: "download",
@@ -108,4 +107,69 @@ $(document).ready(function() {
     }
   }
   renderAnimation(myEffect);
+
+  let currentLocation = window.location.href;
+  console.log(currentLocation);
+
+  let animating = false;
+  $body.on("click", '[data-link="transition"]', function(event) {
+    event.preventDefault();
+    let newPageLink = $(this).attr("href");
+    if (!animating) changePage(newPageLink, true);
+  });
+
+  $(window).on("popstate", function(event) {
+    console.log(location.href);
+    console.log(currentLocation);
+    if (!animating && location.href != currentLocation)
+      changePage(location.href, false);
+  });
+
+  function transitionsSupported() {
+    return $("html").hasClass("csstransitions");
+  }
+
+  function changePage(url, doPushStateBool) {
+    animating = true;
+    $body.addClass("pageIsChanging");
+    $(".pageTransitionLoadingBar").one(
+      "webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
+      function() {
+        loadNewPageContent(url, doPushStateBool);
+        $(".pageTransitionLoadingBar").off(
+          "webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend"
+        );
+      }
+    );
+    if (!transitionsSupported()) loadNewPageContent(url, doPushStateBool);
+  }
+  function loadNewPageContent(url, doPushStateBool) {
+    url = url == "" ? "index.php" : url;
+
+    let $section = $('<div class="main-content"></div>');
+    $section.load(url + " .main-content > *", function() {
+      $("main").html($section);
+      let delay = transitionsSupported() ? 1200 : 0;
+      setTimeout(function() {
+        $body.removeClass("pageIsChanging");
+        animating = false;
+
+        if ($body.hasClass("is-opened")) {
+          $body.removeClass("is-opened");
+        }
+        renderAnimation(myEffect);
+        if (!transitionsSupported()) animating = false;
+      }, delay);
+      if (url != window.location && doPushStateBool) {
+        currentLocation = url;
+        window.history.pushState(
+          {
+            path: url
+          },
+          "",
+          url
+        );
+      }
+    });
+  }
 });

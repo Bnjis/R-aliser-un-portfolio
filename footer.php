@@ -1,4 +1,8 @@
+        </div>
     </main>
+
+    <div class="pageTransitionLayer"></div>
+    <div class="pageTransitionLoadingBar"></div>
 
     <?php include 'pswp.php'; ?>
 
