@@ -23,60 +23,52 @@ $(document).ready(function() {
 
   function renderAnimation(effect) {
     let grid = document.querySelector(".grid");
-    let gridItems = grid.querySelectorAll(".gridItem > .gridImg");
-
-    let effectSettings = effect,
-      animeOptions = effectSettings.animeOptions;
-
-    grid.classList.add("gridLoading");
-
-    $body.imagesLoaded(function() {
-      loadingTimeout = setTimeout(function() {
-        grid.classList.add("willDelete-gridLoading");
-
-        animeOptions.targets = gridItems;
-        anime(animeOptions);
-
-        setTimeout(function() {
-          grid.classList.remove("gridLoading");
-          grid.classList.remove("willDelete-gridLoading");
-        }, 200);
-      }, 200);
-    });
 
     if (grid != null) {
+      let gridItems = grid.querySelectorAll(".gridItem > .gridImg");
+
+      let effectSettings = effect,
+        animeOptions = effectSettings.animeOptions;
+
+      grid.classList.add("gridLoading");
+
+      $body.imagesLoaded(function() {
+        loadingTimeout = setTimeout(function() {
+          grid.classList.add("willDelete-gridLoading");
+
+          animeOptions.targets = gridItems;
+          anime(animeOptions);
+
+          setTimeout(function() {
+            grid.classList.remove("gridLoading");
+            grid.classList.remove("willDelete-gridLoading");
+          }, 200);
+        }, 200);
+      });
+
       window.links = grid.querySelectorAll("a");
 
       window.photos = [];
       let $link;
+      for (let i = 0; i < window.links.length; i++) {
+        $link = window.links[i];
 
-      window.links.forEach(function(item, i) {
-        $link = item;
+        if ($link.nodeType !== 1) {
+          continue;
+        }
 
         window.photos.push({
-          msrc: $link.querySelector("img").getAttribute("src"),
+          msrc: $link.children[0].getAttribute("src"),
           src: $link.getAttribute("href"),
           w: parseInt($link.getAttribute("data-w")),
           h: parseInt($link.getAttribute("data-h"))
         });
+      }
 
-        this.addEventListener("click", function(event) {
+      window.links.forEach((item, index) => {
+        item.addEventListener("click", function(event) {
           event.preventDefault();
           let downloadButtonLabel = "Télécharger";
-
-          // console.log(
-          //   [].find.call(
-          //     window.links,
-          //     link => link.href === event.target.parentNode.href
-          //   )
-          // );
-
-          let getIndex;
-          window.links.forEach((link, index) => {
-            if (link.href.indexOf(event.target.parentNode.href) !== -1) {
-              getIndex = index;
-            }
-          });
 
           window.gallery = new PhotoSwipe(
             document.querySelector(".pswp"),
@@ -95,15 +87,16 @@ $(document).ready(function() {
                   download: true
                 }
               ],
-              index: getIndex,
+              index: index,
               getThumbBoundsFn: function(index) {
-                let $link = window.links.item(index);
-                let $image = $link.querySelector("img");
-                let offset = $image.getBoundingClientRect();
+                let thumbnail = window.links[index],
+                  pageYScroll =
+                    window.pageYOffset || document.documentElement.scrollTop,
+                  rect = thumbnail.getBoundingClientRect();
                 return {
-                  x: offset.left + document.body.scrollLeft,
-                  y: offset.top + document.body.scrollTop,
-                  w: $image.offsetWidth
+                  x: rect.left,
+                  y: rect.top + pageYScroll,
+                  w: rect.width
                 };
               }
             }
